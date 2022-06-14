@@ -1,7 +1,7 @@
 /*
 practical use case for pipe + fork
 sum of all elements in na array by dividing it into three
-processes fo 1/3rd of the work
+processes do 1/3rd of the work
 */
 
 #include <stdio.h>
