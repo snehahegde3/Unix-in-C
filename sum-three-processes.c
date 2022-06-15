@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
         }
         else
         {
+            wait(NULL);
         }
     }
     int sum = 0;
