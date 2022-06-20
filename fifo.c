@@ -19,7 +19,7 @@ create a fifo by mkfifo
 */
 int main(int argc, char* argv){
     if(mkfifo("myfifo", 0777/*permission: read from and wrote to by anybody*/)==-1){
-        if(errno != EEXIST /*when fifo alrady exists*/){
+        if(errno != EEXIST /*when fifo already exists*/){
             printf("Could not create fifo\n");
             return 1;
         }
@@ -45,9 +45,9 @@ int main(int argc, char* argv){
     /*
     the above code just open the fifo and hangs there
     this is because ... for fifos, 
-    opeening the read or write end of the fifo blocks
-    until the other end also oepened by anoter process or thread
-    openeing the mkfifo by the cat command in another terminal solves this
+    opening the read or write end of the fifo blocks
+    until the other end is also oepened by anoter process or thread.
+    Openeing the mkfifo by the cat command in another terminal solves this
     
     similarly if we read from fifo without anyone writing to it, 
     it blocks
