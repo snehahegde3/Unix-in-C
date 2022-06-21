@@ -29,13 +29,27 @@ int main(int *argc, char* argv){
 
     if(pid == 0){
         //child
-        execlp("ping", "ping", "-c", "3", "google.com", NULL);
+        int err = execlp("ping", "ping", "-c", "3", "google.com", NULL);
+        if(err==-1){
+            printf("Could not find program to execute\n");
+        }
         printf("This will not show up on theterminal\n");
     }
     else{
-        wait(NULL);
-        printf("Postprocessing\n");
-        printf("Succes\n");
+        //when error in the process exec is calling
+
+        int wstatus;
+        wait(&wstatus);
+        if(WIFEXITED(wstatus)){
+            //the value that it exited with
+            int statusCode = WEXITSTATUS(wstatus);
+            if(statusCode==0){
+                printf("Success\n");
+            }
+            else{
+                printf("Failure with status code %d\n", statusCode);
+            }
+        }
     }
     return 0;
 }
