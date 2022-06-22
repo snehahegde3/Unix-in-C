@@ -32,4 +32,5 @@ int main(int argc, char *argv[])
         kill(pid, SIGKILL); // sends signal to terminate
         wait(NULL);
     }
+    return 0;
 }

@@ -32,20 +32,18 @@ int main(int argc, char *argv[])
         do
         {
             // input time for execution
-            printf("Time in secs for execution: ");
+            printf("Time in secs for sexecution: ");
             scanf("%d", &t);
             // if t is -ve it goes on for max_int time
             if (t > 0)
             {
-                // continues for t secs, stops
+                // continues for t secs, stoop
                 kill(pid, SIGCONT);
                 sleep(t);
                 kill(pid, SIGSTOP);
             }
 
         } while (t > 0);
-
-        kill(pid, SIGKILL);
 
         wait(NULL);
     }
